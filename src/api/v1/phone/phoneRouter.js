@@ -1,6 +1,6 @@
 const Router = require('koa-router');
 const StatusCodes = require('http-status-codes');
-const { PhonePayment, emailNotificationService } = require('../../../services');
+const { PhonePayment } = require('../../../services');
 const { Phone, Response } = require('../../../types');
 
 // Prefix all routes with: /auth
@@ -64,14 +64,7 @@ router.post('/', async (ctx, next) =>
         return;
     }
 
-    await emailNotificationService.sendReceiptEmail(
-        request.app_name,
-        request.customer_email,
-        request.phone_holder_name,
-        request.service,
-        request.amount,
-        request.amount,
-    );
+
 
     response.success = true;
     response.message = `Transaction is successful.`;

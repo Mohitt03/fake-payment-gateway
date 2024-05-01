@@ -1,6 +1,6 @@
 const Router = require('koa-router');
 const StatusCodes = require('http-status-codes');
-const { CardPayment, emailNotificationService } = require('../../../services');
+const { CardPayment } = require('../../../services');
 const { Card, Response } = require('../../../types');
 
 // Prefix all routes with: /auth
@@ -66,14 +66,7 @@ router.post('/', async (ctx, next) =>
 
     console.log('data Exists');
 
-    await emailNotificationService.sendReceiptEmail(
-        request.app_name,
-        request.customer_email,
-        request.card_holder_name,
-        request.service,
-        request.amount,
-        request.amount,
-    );
+
 
     response.success = true;
     response.message = `Transaction is successful.`;

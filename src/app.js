@@ -10,7 +10,7 @@ const app = new Koa();
 app
     .use(koaBody())
     .use(cors())
-    .use(exceptionService.errorHandler) // register generic error handler middleware
+    // .use(exceptionService.errorHandler) // register generic error handler middleware
     .use(exceptionService.jsonErrorHandler) // register json error handler middleware
     .use(router()) // Use the Router on the sub routes
     .use(KoaStatic('public')) // server statics

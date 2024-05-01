@@ -1,19 +1,4 @@
-// define generic error handler
-const errorHandler = async (ctx, next) =>
-{
-    try
-    {
-        await next();
-    }
-    catch (err)
-    {
-        console.log('errorHandler');
-        ctx.status = err.status || 500;
-        ctx.body = err.expose ? err.message : 'An error occurred!';
-    }
-};
 
-// define json request error handler
 const jsonErrorHandler = async (ctx, next) =>
 {
     try
@@ -41,6 +26,5 @@ const jsonErrorHandler = async (ctx, next) =>
 };
 
 module.exports = {
-    errorHandler,
-    jsonErrorHandler,
+    jsonErrorHandler
 };
